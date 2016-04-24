@@ -1,0 +1,60 @@
+Predict Next Word - Capstone Project
+========================================================
+author: Anusha Bhat
+date: 04-24-2016
+
+Introduction and Agenda
+========================================================
+
+This presentation describes the functioning of the shiny a application to predict the next word for a phrase. The application provides an interface to highlight the prediction algorithm.
+ 
+The use of analysis of text data and natural language processing for predicting the next word will be briefly dicussed. 
+
+#### Agenda-
+1. Data Management <br> 
+2. Prediction Model <br>
+3. Shiny Application
+
+Data Management
+========================================================
+
+The input for the prediction model was cleaned and filed before feeding it into the model. The data used for the model includes large twitter, news and blog text files.  
+
+#### Steps Involved:
+1. Read subset of the three files (1000 lines for each file were read due to computational           limitations) <br>
+2. Bind the three sets of data and create one Corpus <br>
+3. Data Cleansing - remove numbers, punctuation marks, 
+    white spaces, wensites, tweet ids, and words with profanity <br>
+4. Create n-gram tokens - uni, bi, tri and quad gram <br>
+5. Analyze frequencies of top 20 words in each by plotting frequencies <br>
+6. Save the n-gram word/ frequency tables for input to the prediction model <br>
+    
+Prediction Model
+========================================================
+
+The prediction model to generate the next word is based on Katz Back-Off.  
+
+#### Steps Involved:
+1. Read n-gram word/ frequency tables for data reference to the prediction model <br>
+2. Get user desired input from the shiny app and clean the phrase using same method as used for the text courpus <br>
+3. Extract last three/ two/ one word(s) from user phrase <br>
+4. Start by using 3-gram model - the two words in the 3-gram frequency table is the last two words of the phrase <br>
+5. If phrase was not found, back-off to 2-gram and search for first word in 2-gram to match last word in phrase <br>
+6. If word not found, return most frequent word from 1-gram frequency table <br>
+
+Shiny Application
+========================================================
+
+Based on the model described, a Shiny application was designed to return next predicted word given the user input phrase
+
+#### Application features:
+
+1. User Input: User can input a word or phrase for which they want to predict the next word (sample provided in text box) <br>
+2. Submit: The submit buttom needs to be clicked to see confirmation of phrase and the resuts <br> 
+3. Output Tabs: A confirmation of the input is displayed. Results containing the next prdicted word, other best options for the next predicted word along with the model used are displayed in the main panel <br>
+
+Check out the app here: <br>
+https://datascianb.shinyapps.io/Project/
+
+Link to the Individual Code and Files: <br>
+https://datascianb.shinyapps.io/Project/
